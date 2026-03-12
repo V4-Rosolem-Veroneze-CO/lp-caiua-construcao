@@ -85,7 +85,7 @@ export default function LandingPage() {
               Rurópolis, PA
             </div>
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 text-white text-balance leading-[1.1] animate-fade-in-up" style={{ animationDelay: "0.2s", opacity: 0 }}>
-              A sua casa pronta, <span className="text-primary drop-shadow-lg">do zero ao interior</span>
+              A sua casa pronta, <span className="text-primary drop-shadow-lg">do zero ao acabamento</span>
             </h2>
             <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/90 mb-8 md:mb-10 text-pretty leading-relaxed animate-fade-in-up" style={{ animationDelay: "0.4s", opacity: 0 }}>
               Sem precisar lidar com 10 fornecedores diferentes. Centralize sua obra na Caiuá Construções: a autoridade
@@ -153,7 +153,7 @@ export default function LandingPage() {
               <ScrollAnimation direction="right" delay={100}>
                 <div className="relative h-64 sm:h-80 md:h-96 bg-muted rounded-2xl overflow-hidden shadow-xl group">
                   <img
-                    src="/modern-construction-materials-showroom-with-tiles-.jpg"
+                    src="/sobre-nos.jpg"
                     alt="Loja Caiuá Construções"
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
