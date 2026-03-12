@@ -2,15 +2,31 @@
 
 import { useEffect, useState } from "react"
 import { CheckCircle2 } from "lucide-react"
+import { gtmPush } from "@/lib/gtm"
+import { fbqTrack } from "@/lib/fbq"
 
 export default function ObrigadoPage() {
   const [countdown, setCountdown] = useState(5)
 
   useEffect(() => {
+    gtmPush("whatsapp_redirect_start", {
+      page: "obrigado",
+    })
+    fbqTrack("Lead", {
+      step: "redirect_start",
+      page: "obrigado",
+    })
+
     const timer = setInterval(() => {
       setCountdown((prev) => {
         if (prev <= 1) {
           clearInterval(timer)
+          gtmPush("whatsapp_redirect_open", {
+            page: "obrigado",
+          })
+          fbqTrack("Contact", {
+            page: "obrigado",
+          })
           window.open("https://wa.me/5593991250229", "_blank")
           return 0
         }

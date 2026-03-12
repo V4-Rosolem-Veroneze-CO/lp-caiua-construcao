@@ -6,11 +6,19 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Building2, CheckCircle2, Clock, MapPin, Phone, Package, Sparkles, TruckIcon, Lightbulb, Instagram } from "lucide-react"
 import { ScrollAnimation } from "@/components/scroll-animation"
+import { gtmPush } from "@/lib/gtm"
+import { fbqTrack } from "@/lib/fbq"
 
 export default function LandingPage() {
   const router = useRouter()
   
-  const scrollToContact = () => {
+  const scrollToContact = (source: string) => {
+    gtmPush("lead_whatsapp_click", {
+      source,
+    })
+    fbqTrack("Lead", {
+      source,
+    })
     router.push("/obrigado")
   }
 
@@ -50,7 +58,7 @@ export default function LandingPage() {
           <div className="flex items-center gap-2 md:gap-4">
             <span className="hidden lg:block text-sm font-medium text-foreground">(93) 99125-0229</span>
             <Button
-              onClick={scrollToContact}
+              onClick={() => scrollToContact("header_contact_button")}
               size="sm"
               className="bg-primary hover:bg-primary/90 text-primary-foreground transition-all duration-200 shadow-md hover:shadow-lg text-xs md:text-sm px-3 md:px-4"
             >
@@ -93,7 +101,7 @@ export default function LandingPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-3 animate-fade-in-up" style={{ animationDelay: "0.6s", opacity: 0 }}>
               <Button
-                onClick={scrollToContact}
+                onClick={() => scrollToContact("hero_primary_cta")}
                 className="bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-3 shadow-lg transition-all duration-200 hover:shadow-xl hover:bg-primary/95 hover:-translate-y-0.5"
               >
                 <Phone className="w-4 h-4 mr-2" />
@@ -315,7 +323,7 @@ export default function LandingPage() {
                 ganhar forma. Toque no botão abaixo para garantir sua obra completa com orçamento ágil pelo WhatsApp.
               </p>
               <Button
-                onClick={scrollToContact}
+                onClick={() => scrollToContact("midpage_whatsapp_cta")}
                 className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-3 shadow-xl transition-all duration-200 hover:shadow-2xl hover:bg-primary/95 hover:-translate-y-1"
               >
                 <Phone className="w-4 h-4 mr-2" />
@@ -359,7 +367,7 @@ export default function LandingPage() {
                 <Button
                   variant="link"
                   className="p-0 h-auto mt-2 text-primary-foreground hover:text-primary-foreground/80"
-                  onClick={scrollToContact}
+                  onClick={() => scrollToContact("footer_contact_link")}
                 >
                   Fale conosco
                 </Button>
@@ -425,7 +433,7 @@ export default function LandingPage() {
       {/* Botão flutuante do WhatsApp */}
       <div className="fixed bottom-6 right-6 z-50">
         <button
-          onClick={scrollToContact}
+          onClick={() => scrollToContact("floating_whatsapp_button")}
           className="bg-[#25D366] hover:bg-[#20BA5A] text-white rounded-full p-4 shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-110 group relative"
           aria-label="Fale conosco no WhatsApp"
         >
